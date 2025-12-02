@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang di KEMATIF</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        /* ============ NAVBAR ============ */
+        .navbar-brand img {
+            height: 50px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #333 !important;
+        }
+
+        .dropdown-menu {
+            border-radius: 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* ============ HERO SECTION ============ */
+        .hero-section {
+            background: url('img/Background Kematif.png') no-repeat center center;
+            background-size: cover;
+            background-position: 60% 40%;
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 60px;
+            font-weight: 700;
+        }
+
+        .hero-content h1 span {
+            color: #00BFFF;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-primary {
+            background-color: #00BFFF;
+            border-color: #00BFFF;
+            padding: 0.75rem 2rem;
+            font-weight: bold;
+            border-radius: 30px;
+        }
+
+        .btn-primary:hover {
+            background-color: #0099cc;
+            border-color: #0099cc;
+        }
+
+        /* ============ FOOTER ============ */
+        .footer {
+            background-color: #f8f9fa;
+            padding: 3rem 0;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .footer h5 {
+            font-weight: 700;
+            color: #000;
+        }
+
+        .footer-links a {
+            color: #333;
+            text-decoration: none;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .footer-links a:hover {
+            color: #00BFFF;
+            padding-left: 4px;
+            transition: 0.2s;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            font-size: 1.7rem;
+            margin-right: 14px;
+            color: #333;
+        }
+
+        .social-icons a:hover {
+            color: #00BFFF;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .navbar-brand img {
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/kematif_logo.png" alt="Logo KEMATIF">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    <!-- Tentang Kami -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Tentang Kami</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Apa itu Kematif.html">Apa itu Kematif?</a></li>
+                            <li><a class="dropdown-item" href="Layanan.html">Layanan</a></li>
+                            <li><a class="dropdown-item" href="struktur-organisasi.html">Struktur Organisasi</a></li>
+                            <li><a class="dropdown-item" href="kontak.html">Kontak</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Kegiatan -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Kegiatan</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Berita.html">Berita</a></li>
+                            <li><a class="dropdown-item" href="Pencapaian.html">Pencapaian</a></li>
+                            <li><a class="dropdown-item" href="Galeri.html">Galeri</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Pendaftaran -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pendaftaran</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="form-pendaftaran.html">Registrasi</a></li>
+                            <li><a class="dropdown-item" href="Jadwal.html">Jadwal</a></li>
+                            <li><a class="dropdown-item" href="Benefit.html">Benefit</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Selamat datang di <span>KEMATIF</span></h1>
+            <p>Himpunan Prodi Keluarga Teknik Informatika Kampus Politeknik Negeri Jember</p>
+            <a href="Apa itu Kematif.html" class="btn btn-primary">Jelajahi Lebih Lanjut</a>
+        </div>
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-3 mb-4">
+                    <img src="img/kematif_logo.png" alt="Logo KEMATIF" style="height: 120px;">
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h5>KEMATIF</h5>
+                    <p>Keluarga Mahasiswa Program Studi Teknik Informatika adalah ikatan yang menghimpun seluruh mahasiswa Program Studi Teknik Informatika, yang terdiri dari mahasiswa aktif dan alumni. Organisasi ini berada dalam naungan Keluarga Mahasiswa Jurusan Teknologi Informasi Politeknik Negeri Jember.</p>
+                </div>
+
+                <div class="col-md-2 mb-4">
+                    <h5>Navigasi</h5>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="Apa itu Kematif.html">Tentang Kami</a></li>
+                        <li><a href="Berita.html">Kegiatan</a></li>
+                        <li><a href="form-pendaftaran.html">Pendaftaran</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>Kontak</h5>
+                    <address>
+                        Jl. Mastrip No.164, Lingkungan Panji,<br>
+                        Tegalgede, Sumbersari,<br>
+                        Jember, Jawa Timur 68121<br><br>
+                        WA: +62 8784 0199 095<br>
+                        Email: kematif.polije@gmail.com
+                    </address>
+
+                    <div class="social-icons mt-3">
+                        <a href="https://www.youtube.com/channel/UCk4poFo_wJs8Xai-ATGfZJA" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/kematif_polije/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@kematif_polije" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
