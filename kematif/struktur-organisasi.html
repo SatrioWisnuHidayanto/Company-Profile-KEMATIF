@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Organisasi - KEMATIF</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            background-color: #fff;
+        }
+
+        .navbar-brand img {
+            height: 50px;
+        }
+        
+        .navbar-nav .nav-link {
+            font-weight: 500;
+            color: #333 !important;
+        }
+        
+        .navbar-nav .dropdown-menu {
+            border-radius: 0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* Judul Halaman */
+        .page-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 3rem 0 2rem;
+            color: #000;
+        }
+
+        .page-title span {
+            color: #00BFFF;
+        }
+
+        /* Judul Divisi */
+        .division-title {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 3rem 0 1.5rem;
+            color: #000;
+        }
+
+        .division-title span {
+            color: #00BFFF;
+        }
+
+        /* Kartu Anggota - Warna Putih Sesuai Permintaan */
+        .member-card {
+            background: white;
+            border: none;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin-bottom: 2rem;
+            cursor: pointer;
+        }
+
+        .member-card:hover,
+        .member-card.active {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0,191,255,0.25);
+        }
+
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00BFFF, #0080FF);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .member-card:hover::before,
+        .member-card.active::before {
+            transform: scaleX(1);
+        }
+
+        .card-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .member-card:hover .main-photo,
+        .member-card.active .main-photo {
+            transform: scale(1.05) rotate(2deg);
+            filter: brightness(1.1);
+        }
+
+        /* Kepengurusan Inti - ukuran besar */
+        .kepengurusan-card {
+            width: 300px;
+            height: 350px;
+        }
+
+        /* Divisi cards - ukuran lebih kecil */
+        .divisi-card {
+            width: 200px;
+            height: 250px;
+        }
+
+        /* Container untuk menata kartu */
+        .members-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            padding: 0 2rem;
+        }
+
+        /* Container khusus untuk kepengurusan inti (2 di atas, 3 di bawah) */
+        .kepengurusan-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .kepengurusan-row {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: #f8f9fa;
+            padding: 3rem 0;
+            border-top: 1px solid #dee2e6;
+            margin-top: 4rem;
+        }
+
+        .footer .logo img {
+            height: 60px;
+        }
+
+        .footer h5 {
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .footer-links a {
+            color: #333 !important;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: #00BFFF !important;
+        }
+
+        .social-icons a {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            color: #333;
+        }
+
+        .social-icons a:hover {
+            color: #00BFFF;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 2.2rem;
+            }
+            .division-title {
+                font-size: 1.8rem;
+            }
+            .kepengurusan-card {
+                width: 250px;
+                height: 300px;
+            }
+            .divisi-card {
+                width: 180px;
+                height: 220px;
+            }
+            .kepengurusan-row {
+                flex-direction: column;
+                align-items: center;
+            }
+            .members-container {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .kepengurusan-card {
+                width: 220px;
+                height: 260px;
+            }
+            .divisi-card {
+                width: 150px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/kematif_logo.png" alt="Logo KEMATIF">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    <!-- Tentang Kami -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Tentang Kami</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Apa itu Kematif.html">Apa itu Kematif?</a></li>
+                            <li><a class="dropdown-item" href="Layanan.html">Layanan</a></li>
+                            <li><a class="dropdown-item" href="struktur-organisasi.html">Struktur Organisasi</a></li>
+                            <li><a class="dropdown-item" href="kontak.html">Kontak</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Kegiatan -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Kegiatan</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="Berita.html">Berita</a></li>
+                            <li><a class="dropdown-item" href="Pencapaian.html">Pencapaian</a></li>
+                            <li><a class="dropdown-item" href="Galeri.html">Galeri</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Pendaftaran -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Pendaftaran</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="form-pendaftaran.html">Registrasi</a></li>
+                            <li><a class="dropdown-item" href="Jadwal.html">Jadwal</a></li>
+                            <li><a class="dropdown-item" href="Benefit.html">Benefit</a></li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mt-5">
+
+        <!-- Judul Halaman -->
+        <h1 class="page-title">Kepengurusan <span>KEMATIF</span></h1>
+
+        <!-- Kepengurusan Inti - 2 kotak di atas, 3 kotak di bawah -->
+        <div class="kepengurusan-container">
+            <!-- Row 1: 2 kotak -->
+            <div class="kepengurusan-row">
+                <div class="member-card kepengurusan-card">
+                    <div class="card-image-container">
+                        <img src="img/pengurus 1.png" alt="Anggota 1" class="main-photo">
+                    </div>
+                </div>
+                <div class="member-card kepengurusan-card">
+                    <div class="card-image-container">
+                        <img src="img/pengurus 2.png" alt="Anggota 2" class="main-photo">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Row 2: 3 kotak -->
+            <div class="kepengurusan-row">
+                <div class="member-card kepengurusan-card">
+                    <div class="card-image-container">
+                        <img src="img/pengurus 3.png" alt="Anggota 3" class="main-photo">
+                    </div>
+                </div>
+                <div class="member-card kepengurusan-card">
+                    <div class="card-image-container">
+                        <img src="img/pengurus 4.png" alt="Anggota 4" class="main-photo">
+                    </div>
+                </div>
+                <div class="member-card kepengurusan-card">
+                    <div class="card-image-container">
+                        <img src="img/pengurus 5.png" alt="Anggota 5" class="main-photo">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divisi PSDM - 4 kotak -->
+        <h2 class="division-title">Divisi <span>PSDM</span></h2>
+        <div class="members-container">
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/psdm 1.png" alt="Anggota PSDM 1" class="main-photo">
+                </div>
+            </div>
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/psdm 2.png" alt="Anggota PSDM 2" class="main-photo">
+                </div>
+            </div>
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/psdm 3.png" alt="Anggota PSDM 3" class="main-photo">
+                </div>
+            </div>
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/psdm 4.png" alt="Anggota PSDM 4" class="main-photo">
+                </div>
+            </div>
+        </div>
+
+        <!-- Divisi Kominfo - 3 kotak -->
+        <h2 class="division-title">Divisi <span>Kominfo</span></h2>
+        <div class="members-container">
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/kmf 1.png" alt="Anggota Kominfo 1" class="main-photo">
+                </div>
+            </div>
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/kmf 2.png" alt="Anggota Kominfo 2" class="main-photo">
+                </div>
+            </div>
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/kmf 3.png" alt="Anggota Kominfo 3" class="main-photo">
+                </div>
+            </div>
+        </div>
+
+        <!-- Divisi KWU - 2 kotak -->
+        <h2 class="division-title">Divisi <span>KWU</span></h2>
+        <div class="members-container">
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/kwu1.png" alt="Anggota KWU 1" class="main-photo">
+                </div>
+            </div>
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/kwu2.png" alt="Anggota KWU 2" class="main-photo">
+                </div>
+            </div>
+        </div>
+
+        <!-- Divisi Humas - 4 kotak -->
+        <h2 class="division-title">Divisi <span>Humas</span></h2>
+        <div class="members-container">
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/hms1.png" alt="Anggota Humas 1" class="main-photo">
+                </div>
+            </div>
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/hms2.png" alt="Anggota Humas 2" class="main-photo">
+                </div>
+            </div>
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/hms3.png" alt="Anggota Humas 3" class="main-photo">
+                </div>
+            </div>
+            <div class="member-card divisi-card">
+                <div class="card-image-container">
+                    <img src="img/hms4.png" alt="Anggota Humas 4" class="main-photo">
+                </div>
+            </div>
+        </div>
+    </main>
+
+   <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-md-3 mb-4">
+                    <img src="img/kematif_logo.png" alt="Logo KEMATIF" style="height: 120px;">
+                </div>
+
+                <div class="col-md-3 mb-4">
+                    <h5>KEMATIF</h5>
+                    <p>Keluarga Mahasiswa Program Studi Teknik Informatika adalah ikatan yang menghimpun seluruh mahasiswa Program Studi Teknik Informatika, yang terdiri dari mahasiswa aktif dan alumni. Organisasi ini berada dalam naungan Keluarga Mahasiswa Jurusan Teknologi Informasi Politeknik Negeri Jember.</p>
+                </div>
+
+                <div class="col-md-2 mb-4">
+                    <h5>Navigasi</h5>
+                    <ul class="footer-links list-unstyled">
+                        <li><a href="Apa itu Kematif.html">Tentang Kami</a></li>
+                        <li><a href="Berita.html">Kegiatan</a></li>
+                        <li><a href="form-pendaftaran.html">Pendaftaran</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>Kontak</h5>
+                    <address>
+                        Jl. Mastrip No.164, Lingkungan Panji,<br>
+                        Tegalgede, Sumbersari,<br>
+                        Jember, Jawa Timur 68121<br><br>
+                        WA: +62 8784 0199 095<br>
+                        Email: kematif.polije@gmail.com
+                    </address>
+
+                    <div class="social-icons mt-3">
+                        <a href="https://www.youtube.com/channel/UCk4poFo_wJs8Xai-ATGfZJA" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/kematif_polije/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@kematif_polije" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Add click functionality to member cards
+        document.querySelectorAll('.member-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // Remove active class from all cards
+                document.querySelectorAll('.member-card').forEach(c => {
+                    c.classList.remove('active');
+                });
+                // Add active class to clicked card
+                this.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
+
