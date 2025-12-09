@@ -79,43 +79,38 @@
         }
         
         .footer {
-            background: #f8f9fa;
-            margin-top: 60px;
-            padding: 50px 0;
-            border-top: 1px solid #ddd;
+            background-color: #f8f9fa;
+            padding: 3rem 0;
+            border-top: 1px solid #dee2e6;
         }
-
-        .footer-link {
-            color: #333;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 6px;
+        
+        .footer .logo img {
+            height: 60px;
         }
-
-        .footer-link:hover {
-            color: #00BFFF;
-            padding-left: 4px;
-            transition: 0.2s;
-        }
-
-        .social-icons a {
-            display: inline-block;
-            margin-right: 15px;
-        }
-
-        .social-icons i {
-            font-size: 24px;
-            color: #000;
-            transition: 0.3s;
-        }
-
-        .social-icons i:hover {
-            color: #0096FF;
-        }
-
-        /* Footer headings bold */
+        
         .footer h5 {
             font-weight: bold;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .footer-links a {
+            color: #333 !important;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: #00BFFF !important;
+        }
+        
+        .social-icons a {
+            font-size: 1.5rem;
+            margin-right: 10px;
+            color: #333;
+        }
+        
+        .social-icons a:hover {
+            color: #00BFFF;
         }
         
         @media (max-width: 768px) {
@@ -127,26 +122,26 @@
             }
         }
         
-        /* Agenda Bulanan Styling */
-        .agenda-page {
-            padding: 2rem 0;
+        /* Galeri Kegiatan Styling */
+        .gallery-page {
+            padding: 4rem 0;
         }
         
-        .agenda-header {
+        .gallery-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
         }
         
-        .agenda-header h2 {
+        .gallery-header h2 {
             font-size: 2.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             color: #000;
             font-weight: 700;
             position: relative;
             display: inline-block;
         }
         
-        .agenda-header h2::after {
+        .gallery-header h2::after {
             content: '';
             position: absolute;
             bottom: -10px;
@@ -158,34 +153,26 @@
             border-radius: 2px;
         }
         
-        .agenda-subtitle {
-            font-size: 1.2rem;
-            text-align: center;
-            color: #666;
-            margin-top: 1rem;
-        }
-        
-        .agenda-container {
+        .gallery-container {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
             justify-content: center;
-            margin-top: 2rem;
         }
         
-        .agenda-item {
+        .gallery-item {
             width: 350px;
-            height: 250px;
-            overflow: hidden;
+            background: white;
             border: none;
             border-radius: 16px;
+            overflow: hidden;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             cursor: pointer;
         }
         
-        .agenda-item::before {
+        .gallery-item::before {
             content: '';
             position: absolute;
             top: 0;
@@ -198,28 +185,60 @@
             transition: transform 0.4s ease;
         }
         
-        .agenda-item:hover,
-        .agenda-item.active {
+        .gallery-item:hover,
+        .gallery-item.active {
             transform: translateY(-8px) scale(1.03);
             box-shadow: 0 15px 35px rgba(0,191,255,0.25);
         }
         
-        .agenda-item:hover::before,
-        .agenda-item.active::before {
+        .gallery-item:hover::before,
+        .gallery-item.active::before {
             transform: scaleX(1);
         }
         
-        .agenda-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .gallery-image {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+        }
+        
+        .gallery-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
             transition: all 0.5s ease;
         }
         
-        .agenda-item:hover .agenda-image,
-        .agenda-item.active .agenda-image {
+        .gallery-item:hover .gallery-image img,
+        .gallery-item.active .gallery-image img {
             transform: scale(1.05) rotate(2deg);
             filter: brightness(1.1);
+        }
+        
+        .gallery-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .gallery-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .gallery-description {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            text-align: left;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            margin-top: 0.5rem;
         }
         
         /* Navigation styling for active page */
@@ -229,7 +248,7 @@
         }
         
         @media (max-width: 480px) {
-            .agenda-header h2 {
+            .gallery-header h2 {
                 font-size: 2rem;
             }
         }
@@ -237,14 +256,14 @@
 </head>
 <body>
 
-   <!-- Navbar -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <img src="img/kematif_logo.png" alt="Logo KEMATIF">
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
@@ -253,7 +272,7 @@
 
                     <!-- Tentang Kami -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tentang Kami</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Tentang Kami</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="Apa itu Kematif.html">Apa itu Kematif?</a></li>
                             <li><a class="dropdown-item" href="Layanan.html">Layanan</a></li>
@@ -264,7 +283,7 @@
 
                     <!-- Kegiatan -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Kegiatan</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Kegiatan</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="Berita.html">Berita</a></li>
                             <li><a class="dropdown-item" href="Pencapaian.html">Pencapaian</a></li>
@@ -274,7 +293,7 @@
 
                     <!-- Pendaftaran -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Pendaftaran</a>
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Pendaftaran</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="form-pendaftaran.html">Registrasi</a></li>
                             <li><a class="dropdown-item" href="Jadwal.html">Jadwal</a></li>
@@ -287,51 +306,93 @@
         </div>
     </nav>
 
-    <!-- Agenda Bulanan Page -->
-    <section class="agenda-page">
+    <!-- Galeri Kegiatan Page -->
+    <section class="gallery-page">
         <div class="container">
-            <div class="agenda-header">
+            <div class="gallery-header">
                 <h2>Galeri</h2>
-                <p class="agenda-subtitle">Beberapa foto kegiatan kami</p>
             </div>
-            <div class="agenda-container">
-                <!-- Agenda Item 1 -->
-                <div class="agenda-item">
-                    <img class="agenda-image" src="imgglr/geleri1.jpg" alt="Scenic View">
+            <div class="gallery-container">
+                <!-- Gallery Item 1 -->
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="imgglr/geleri1.jpg" alt="Goal Image">
+                    </div>
+                    <div class="gallery-content"> 
+                        <div class="gallery-description">
+                            Memiliki kemampuan kepemimpinan yang terbukti melalui pengalaman mengelola kegiatan organisasi serta berkontribusi dalam meningkatkan kinerja tim.
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Agenda Item 2 -->
-                <div class="agenda-item">
-                    <img class="agenda-image" src="imgglr/galeri2.jpg" alt="Steam Random Keys">
+                <!-- Gallery Item 2 -->
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="imgglr/galeri2.jpg" alt="Goal Image">
+                    </div>
+                    <div class="gallery-content">
+                        <div class="gallery-description">
+                            Memiliki kemampuan kepemimpinan yang terbukti melalui pengalaman mengelola kegiatan organisasi serta berkontribusi dalam meningkatkan kinerja tim.
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Agenda Item 3 -->
-                <div class="agenda-item">
-                    <img class="agenda-image" src="imgglr/galeri3.jpg" alt="Scenic View">
+                <!-- Gallery Item 3 -->
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="imgglr/galeri3.jpg" alt="Goal Image">
+                    </div>
+                    <div class="gallery-content">
+                        <div class="gallery-description">
+                            Memiliki kemampuan kepemimpinan yang terbukti melalui pengalaman mengelola kegiatan organisasi serta berkontribusi dalam meningkatkan kinerja tim.
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Agenda Item 4 -->
-                <div class="agenda-item">
-                    <img class="agenda-image" src="imgglr/galeri4.jpg" alt="Steam Random Keys">
+                <!-- Gallery Item 4 -->
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="imgglr/galeri4.jpg" alt="Goal Image">
+                    </div>
+                    <div class="gallery-content">
+                        <div class="gallery-description">
+                            Memiliki kemampuan kepemimpinan yang terbukti melalui pengalaman mengelola kegiatan organisasi serta berkontribusi dalam meningkatkan kinerja tim.
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Agenda Item 5 -->
-                <div class="agenda-item">
-                    <img class="agenda-image" src="imgglr/galeri5.jpg" alt="Scenic View">
+                <!-- Gallery Item 5 -->
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="imgglr/galeri5.jpg" alt="Goal Image">
+                    </div>
+                    <div class="gallery-content">
+                        <div class="gallery-description">
+                            Memiliki kemampuan kepemimpinan yang terbukti melalui pengalaman mengelola kegiatan organisasi serta berkontribusi dalam meningkatkan kinerja tim.
+                        </div>
+                    </div>
                 </div>
                 
-                <!-- Agenda Item 6 -->
-                <div class="agenda-item">
-                    <img class="agenda-image" src="imgglr/galeri6.jpg" alt="Steam Random Keys">
+                <!-- Gallery Item 6 -->
+                <div class="gallery-item">
+                    <div class="gallery-image">
+                        <img src="imgglr/galeri6.jpg" alt="Goal Image">
+                    </div>
+                    <div class="gallery-content">
+                        <div class="gallery-description">
+                            Memiliki kemampuan kepemimpinan yang terbukti melalui pengalaman mengelola kegiatan organisasi serta berkontribusi dalam meningkatkan kinerja tim.
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-   <!-- FOOTER -->
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="container">
             <div class="row">
+                
                 <div class="col-md-3 mb-4">
                     <img src="img/kematif_logo.png" alt="Logo KEMATIF" style="height: 120px;">
                 </div>
@@ -344,9 +405,9 @@
                 <div class="col-md-2 mb-4">
                     <h5>Navigasi</h5>
                     <ul class="footer-links list-unstyled">
-                        <li><a href="Apa itu Kematif.html" class="footer-link">Tentang Kami</a></li>
-                        <li><a href="Berita.html" class="footer-link">Kegiatan</a></li>
-                        <li><a href="form-pendaftaran.html" class="footer-link">Pendaftaran</a></li>
+                        <li><a href="Apa itu Kematif.html">Tentang Kami</a></li>
+                        <li><a href="Berita.html">Kegiatan</a></li>
+                        <li><a href="form-pendaftaran.html">Pendaftaran</a></li>
                     </ul>
                 </div>
 
@@ -361,17 +422,12 @@
                     </address>
 
                     <div class="social-icons mt-3">
-                        <a href="https://www.youtube.com/channel/UCk4poFo_wJs8Xai-ATGfZJA" target="_blank" rel="noopener noreferrer">
-                            <i class="fa-brands fa-youtube"></i>
-                        </a>
-                        <a href="https://www.instagram.com/kematif_polije/" target="_blank" rel="noopener noreferrer">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="https://www.tiktok.com/@kematif_polije" target="_blank" rel="noopener noreferrer">
-                            <i class="fa-brands fa-tiktok"></i>
-                        </a>
+                        <a href="https://www.youtube.com/channel/UCk4poFo_wJs8Xai-ATGfZJA" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+                        <a href="https://www.instagram.com/kematif_polije/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.tiktok.com/@kematif_polije" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
                     </div>
                 </div>
+
             </div>
         </div>
     </footer>
@@ -380,11 +436,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
     <script>
-        // Add click functionality to agenda items
-        document.querySelectorAll('.agenda-item').forEach(item => {
+        // Add click functionality to gallery items
+        document.querySelectorAll('.gallery-item').forEach(item => {
             item.addEventListener('click', function() {
                 // Remove active class from all items
-                document.querySelectorAll('.agenda-item').forEach(i => {
+                document.querySelectorAll('.gallery-item').forEach(i => {
                     i.classList.remove('active');
                 });
                 // Add active class to clicked item
